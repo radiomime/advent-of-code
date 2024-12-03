@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Elf:
     snacks: list[int]
@@ -10,9 +11,6 @@ def getBlankElf() -> Elf:
     return Elf([], 0)
 
 
-
-
-
 def getElves():
     elves = []
     elf = getBlankElf()
@@ -20,7 +18,7 @@ def getElves():
     with open("1a.input.txt") as f:
         for line in f:
             line = line.strip()
-            if line != '':
+            if line != "":
                 elf.snacks.append(int(line))
                 elf.totalCalories = elf.totalCalories + int(line)
             else:
@@ -28,7 +26,6 @@ def getElves():
                 elf = getBlankElf()
 
     return elves
-
 
 
 def getWorstElf(elves):
@@ -39,6 +36,8 @@ def getWorstElf(elves):
             worstElf = elf
 
     return worstElf
+
+
 def getBestElf(elves):
     bestElf = getBlankElf()
 
@@ -48,12 +47,14 @@ def getBestElf(elves):
 
     return bestElf
 
+
 def sortElves(elves):
     return sorted(elves, key=lambda elf: elf.totalCalories)
 
+
 def getBestXElfs(elves: list[Elf], x: int):
     return sortElves(elves)[-x:]
-    
+
 
 def combineElfFood(elves):
     total = 0
@@ -62,7 +63,7 @@ def combineElfFood(elves):
     return total
 
 
-if  __name__ == "__main__":
+if __name__ == "__main__":
     elves = getElves()
 
     # print(sortElves(elves))
@@ -72,6 +73,3 @@ if  __name__ == "__main__":
     bestElves = getBestXElfs(elves, 3)
     print(bestElves)
     print(combineElfFood(bestElves))
-
-
-    
